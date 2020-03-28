@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Mirror;
 public class PlayerMovement : NetworkBehaviour
 {
@@ -8,18 +9,26 @@ public class PlayerMovement : NetworkBehaviour
     private Vector2 rotation = Vector2.zero;
     private Rigidbody rb;
     public float moveSpeed = 5f;
+    public float jumpSpeed = 0.05f;
+    private Text fpsText;
+    private float hudRefreshRate = 1f;
 
     public Transform temp;
     void Start()
     {
+        fpsText = GameObject.FindGameObjectWithTag("fpsCounter").GetComponent<Text>();
         Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
-
     }
-
+    private float timer;
     void Update()
     {
-        
+        if (Time.unscaledTime > timer)
+        {
+            int fps = (int)(1f / Time.unscaledDeltaTime);
+            fpsText.text = fps.ToString();
+            timer = Time.unscaledTime + hudRefreshRate;
+        }
     }
 
     private void FixedUpdate()
@@ -28,8 +37,8 @@ public class PlayerMovement : NetworkBehaviour
             return;
         }
         Look();
-        if(Input.GetKey(KeyCode.Space)){
-            rb.MovePosition(temp.position);
+        if(Input.GetKeyDown(KeyCode.Space)){
+            rb.AddForce(transform.up * jumpSpeed, ForceMode.Impulse);
         }
         if(Input.GetKey(KeyCode.W)){
             //rb.AddForce(transform.forward * moveSpeed);

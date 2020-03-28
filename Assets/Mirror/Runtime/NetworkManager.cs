@@ -295,7 +295,10 @@ namespace Mirror
             string loadedSceneName = SceneManager.GetActiveScene().name;
             return !string.IsNullOrEmpty(onlineScene) && onlineScene != loadedSceneName && onlineScene != offlineScene;
         }
-
+        void OnAwake(){
+            Debug.Log("UP");
+            LogFilter.Debug = true;
+        }
         // full server setup code, without spawning objects yet
         void SetupServer()
         {
