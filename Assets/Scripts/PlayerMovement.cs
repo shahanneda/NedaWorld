@@ -19,6 +19,21 @@ public class PlayerMovement : NetworkBehaviour
         fpsText = GameObject.FindGameObjectWithTag("fpsCounter").GetComponent<Text>();
         Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
+
+        if (!isLocalPlayer)
+        {
+            if (gameObject.GetComponentInChildren<Camera>() != null)
+            {
+                gameObject.GetComponentInChildren<Camera>().gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            if (gameObject.GetComponentInChildren<Camera>() != null)
+            {
+                gameObject.GetComponentInChildren<Camera>().gameObject.SetActive(true);
+            }
+        }
     }
     private float timer;
     void Update()
