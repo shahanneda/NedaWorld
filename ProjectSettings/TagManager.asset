@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - fpsCounter
+  - userNameField
   layers:
   - Default
   - TransparentFX

@@ -2,6 +2,7 @@
 // confusion if someone accidentally presses one.
 using System.ComponentModel;
 using UnityEngine;
+using TMPro;
 
 namespace Mirror
 {
@@ -32,6 +33,7 @@ namespace Mirror
         /// </summary>
         public int offsetY;
 
+        private TMP_InputField userNameField;
         void Awake()
         {
             manager = GetComponent<NetworkManager>();
@@ -63,6 +65,7 @@ namespace Mirror
                         manager.StartClient();
                     }
                     manager.networkAddress = GUILayout.TextField(manager.networkAddress);
+                    (WorldNetworkManager)manager.playerUserName = userNameField.text;
                     GUILayout.EndHorizontal();
 
                     // LAN Server Only
