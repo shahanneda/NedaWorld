@@ -13,6 +13,10 @@ public class PlayerUserNameText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(Camera.main.transform.position);
+        //transform.LookAt(Camera.main.transform.position);
+        Quaternion targetRotation = Quaternion.LookRotation(Camera.main.transform.position - transform.position);
+        transform.rotation = targetRotation; 
+
+
     }
 }
