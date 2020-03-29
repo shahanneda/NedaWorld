@@ -16,7 +16,7 @@ public class PlayerMovement : NetworkBehaviour
     public Transform temp;
     void Start()
     {
-        fpsText = GameObject.FindGameObjectWithTag("fpsCounter").GetComponent<Text>();
+//        fpsText = GameObject.FindGameObjectWithTag("fpsCounter").GetComponent<Text>();
         Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
     }
@@ -26,7 +26,7 @@ public class PlayerMovement : NetworkBehaviour
         if (Time.unscaledTime > timer)
         {
             int fps = (int)(1f / Time.unscaledDeltaTime);
-            fpsText.text = fps.ToString();
+            //fpsText.text = fps.ToString();
             timer = Time.unscaledTime + hudRefreshRate;
         }
     }

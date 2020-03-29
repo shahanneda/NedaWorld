@@ -31,7 +31,7 @@ namespace Mirror
         /// </summary>
         public int offsetY;
 
-        public string userName;
+        public string userName = "Random Name";
         //private TMP_InputField userNameField;
         void Awake()
         {
@@ -67,7 +67,7 @@ namespace Mirror
                         manager.StartClient();
                     }
                     manager.networkAddress = GUILayout.TextField(manager.networkAddress);
-                    ((NedaWorld.WorldNetworkManager)manager).playerUserName = userName; 
+                    ((WorldNetworkManager)manager).playerUserName = userName; 
                     GUILayout.EndHorizontal();
 
                     // LAN Server Only
