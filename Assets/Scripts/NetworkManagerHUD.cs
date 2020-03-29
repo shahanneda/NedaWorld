@@ -2,8 +2,6 @@
 // confusion if someone accidentally presses one.
 using System.ComponentModel;
 using UnityEngine;
-using TMPro;
-
 namespace Mirror
 {
     /// <summary>
@@ -22,7 +20,7 @@ namespace Mirror
         /// Whether to show the default control HUD at runtime.
         /// </summary>
         public bool showGUI = true;
-
+        
         /// <summary>
         /// The horizontal offset in pixels to draw the HUD runtime GUI at.
         /// </summary>
@@ -33,12 +31,16 @@ namespace Mirror
         /// </summary>
         public int offsetY;
 
-        private TMP_InputField userNameField;
+        public string userName;
+        //private TMP_InputField userNameField;
         void Awake()
         {
             manager = GetComponent<NetworkManager>();
         }
 
+        public void SetUserName(string text) {
+            userName = text; 
+        }
         void OnGUI()
         {
             if (!showGUI)
@@ -65,7 +67,7 @@ namespace Mirror
                         manager.StartClient();
                     }
                     manager.networkAddress = GUILayout.TextField(manager.networkAddress);
-                    (WorldNetworkManager)manager.playerUserName = userNameField.text;
+                    ((NedaWorld.WorldNetworkManager)manager).playerUserName = userName; 
                     GUILayout.EndHorizontal();
 
                     // LAN Server Only
