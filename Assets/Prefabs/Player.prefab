@@ -241,7 +241,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   userNameText: {fileID: 0}
-  userName: 
+  userName: Username
 --- !u!114 &-6225858860107347777
 MonoBehaviour:
   m_ObjectHideFlags: 0
