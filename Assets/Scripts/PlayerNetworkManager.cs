@@ -41,23 +41,14 @@ public class PlayerNetworkManager : NetworkBehaviour
         if (!oldvalue.Equals(newvalue)) {
             userName = newvalue;
         }
-        Debug.Log("GOT new  username, oldvalue: " + oldvalue + " newvalue: " + newvalue);
     }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) {
-            userName = "AHHHHHHHH"; 
-        }
-        if (isLocalPlayer) {
-            userName = FindObjectOfType<WorldNetworkManager>().playerUserName;
-            print("SET USEER NAME  TO" + userName);
-        }
-        gameObject.GetComponentInChildren<TMP_Text>().SetText(userName);
     }
 
     [Command]
     void CmdSetUserName(string name) {
         userName = name;
-        print("SET USEER NAME  TO" + userName);
     }
 }
