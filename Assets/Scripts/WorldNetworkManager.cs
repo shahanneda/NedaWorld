@@ -4,7 +4,7 @@ using UnityEngine;
 using Mirror;
     public class WorldNetworkManager : NetworkManager
     {
-        public string playerUserName = "";
+        public string playerUserName = "Defualt Name";
         public static int texst = 23;
     }
 

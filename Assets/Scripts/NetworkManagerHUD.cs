@@ -39,7 +39,8 @@ namespace Mirror
         }
 
         public void SetUserName(string text) {
-            userName = text; 
+            userName = text;
+            GameObject.FindObjectOfType<WorldNetworkManager>().playerUserName = text;
         }
         void OnGUI()
         {
