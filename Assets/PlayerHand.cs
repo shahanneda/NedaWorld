@@ -6,10 +6,11 @@ public class PlayerHand : MonoBehaviour
 {
     PlayerManager playerManager;
     public GameObject pickUpLocation;
-    public Transform worldTransform;
+    private Transform worldTransform;
     void Start()
     {
-        playerManager = GetComponent<PlayerManager>(); 
+        playerManager = GetComponent<PlayerManager>();
+        worldTransform = GameObject.FindGameObjectWithTag("worldParent").transform;
     }
 
     void Update()
@@ -35,8 +36,9 @@ public class PlayerHand : MonoBehaviour
         if(playerMoveableObject  == null) {
             return;
         }
-        playerMoveableObject.transform.position = new Vector3(0, 0, 0);
         playerMoveableObject.EnablePickedUpMode();
         playerMoveableObject.transform.SetParent(pickUpLocation.transform);
+        playerMoveableObject.transform.localPosition = new Vector3(0, 0, 0) ;
+        playerMoveableObject.transform.localRotation = Quaternion.identity;
     }
 }

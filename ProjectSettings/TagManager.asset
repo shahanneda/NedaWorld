@@ -6,6 +6,7 @@ TagManager:
   tags:
   - fpsCounter
   - userNameField
+  - worldParent
   layers:
   - Default
   - TransparentFX

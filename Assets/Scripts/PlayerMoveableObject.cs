@@ -21,9 +21,11 @@ public class PlayerMoveableObject : MonoBehaviour
     {
         isPickedUpByPlayer = true;
         GetComponent<Collider>().enabled = false;
+        GetComponent<Rigidbody>().isKinematic = true;
     }
     public void DisablePickedUpMode() {
         isPickedUpByPlayer = false;
+        GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Collider>().enabled = true;
     }
 }
