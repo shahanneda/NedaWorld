@@ -13,7 +13,8 @@ public class PlayerMovement : NetworkBehaviour
     private Text fpsText;
     private float hudRefreshRate = 1f;
 
-    public Transform temp;
+    public Texture2D crosshairImage;
+    public Texture2D biggerCrosshairImage;
     void Start()
     {
 //        fpsText = GameObject.FindGameObjectWithTag("fpsCounter").GetComponent<Text>();
@@ -30,7 +31,12 @@ public class PlayerMovement : NetworkBehaviour
             timer = Time.unscaledTime + hudRefreshRate;
         }
     }
-
+    void OnGUI()
+    {
+        float xMin = (Screen.width / 2) - (crosshairImage.width / 4);
+        float yMin = (Screen.height / 2) - (crosshairImage.height / 4);
+        GUI.DrawTexture(new Rect(xMin, yMin, crosshairImage.width/2, crosshairImage.height/2), crosshairImage);
+    }
     private void FixedUpdate()
     {
         if(!isLocalPlayer){
