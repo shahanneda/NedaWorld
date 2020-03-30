@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private PlayerHand playerHand;
+    public GameObject currentObjectInCrosshairIsOn;
+
     void Start()
     {
-        
+        playerHand = GetComponent<PlayerHand>();    
     }
 
     // Update is called once per frame
@@ -17,7 +19,10 @@ public class PlayerManager : MonoBehaviour
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         Physics.Raycast(ray, out hit);
         if (hit.collider != null) { 
-            print(hit.collider.gameObject.transform.name);
+            currentObjectInCrosshairIsOn = hit.collider.gameObject;
+        }
+        else {
+            currentObjectInCrosshairIsOn = null; 
         }
     }
 }
