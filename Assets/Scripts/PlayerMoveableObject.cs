@@ -1,31 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class PlayerMoveableObject : MonoBehaviour
+public class PlayerMoveableObject : NetworkBehaviour
 {
-    public bool isPickedUpByPlayer = false;
-    // Start is called before the first frame update
+    [SyncVar]
+    public bool isPickedUpByPlayer;
+        
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (isPickedUpByPlayer) { 
+                GetComponent<Collider>().enabled = false;
+                GetComponent<Rigidbody>().isKinematic = true;
+        }else{  
+                GetComponent<Collider>().enabled = true;
+                GetComponent<Rigidbody>().isKinematic = false;
+        }    
     }
 
-    public void EnablePickedUpMode()
+    [ClientRpc]
+    void RpcPickUpMode(bool state)
     {
-        isPickedUpByPlayer = true;
-        GetComponent<Collider>().enabled = false;
-        GetComponent<Rigidbody>().isKinematic = true;
+        Debug.Log("Set Pick Up mode to " + state);
+        isPickedUpByPlayer = state;
+    }
+    [Command]
+    public void CmdPickUpMode(bool state) {
+        Debug.Log("SET STATE FOR PICK UP MODE FROM COMMAND");
+        isPickedUpByPlayer = state;
+        RpcPickUpMode(state); 
+    }
+
+    public void EnablePickedUpMode() {
+        if (isServer) { 
+                RpcPickUpMode(true);
+        }
+        else {
+            CmdPickUpMode(true); 
+        }
     }
     public void DisablePickedUpMode() {
-        isPickedUpByPlayer = false;
-        GetComponent<Rigidbody>().isKinematic = false;
-        GetComponent<Collider>().enabled = true;
+        if (isServer) { 
+            RpcPickUpMode(false);
+        }
+        else {
+            CmdPickUpMode(false); 
+        }
+
     }
+
 }
