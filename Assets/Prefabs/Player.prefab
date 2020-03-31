@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 7135143457825952874}
   - component: {fileID: -7348748581468389722}
   - component: {fileID: -6225858860107347777}
-  - component: {fileID: -6776709635461411391}
+  - component: {fileID: 7208724466729687277}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentObjectInCrosshairIsOn: {fileID: 0}
---- !u!114 &-6776709635461411391
+--- !u!114 &7208724466729687277
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2820930373762653808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59acc9c0781d94ee4a0f76a047945002, type: 3}
+  m_Script: {fileID: 11500000, guid: b905155ec00d8402a831af7397b8fc27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpLocation: {fileID: 6978992556758241070}
@@ -570,7 +570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6606202261952849249}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Player Hand Pickup location
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
